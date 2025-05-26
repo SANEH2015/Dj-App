@@ -22,64 +22,8 @@
             min-height: 100vh;
         }
         
-        .status-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-        
-        .signal-bars {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .signal-container {
-            display: flex;
-            gap: 0.25rem;
-        }
-        
-        .signal-bar {
-            width: 0.25rem;
-            height: 0.75rem;
-            background-color: #ffffff;
-            border-radius: 0.125rem;
-        }
-        
-        .signal-bar-inactive {
-            width: 0.25rem;
-            height: 0.75rem;
-            background-color: #6b7280;
-            border-radius: 0.125rem;
-        }
-        
-        .battery-icon {
-            width: 1rem;
-            height: 0.75rem;
-            margin-left: 0.25rem;
-        }
-        
         .main-content {
             padding: 0 1.5rem;
-        }
-        
-        .bookmark-container {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 1rem;
-        }
-        
-        .bookmark-icon {
-            width: 3rem;
-            height: 3rem;
-            background-color: #22d3ee;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .artist-image-container {
@@ -100,13 +44,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
         }
         
         .image-overlay {
             position: absolute;
             inset: 0;
-            
         }
 
         .artist-info {
@@ -134,11 +76,6 @@
             margin-bottom: 1rem;
         }
         
-        .artist-stats {
-            color: #6b7280;
-            font-size: 0.875rem;
-        }
-        
         .action-buttons {
             display: flex;
             gap: 1rem;
@@ -155,7 +92,11 @@
             font-size: 1.125rem;
             border: none;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
         
         .listen-button:hover {
@@ -180,56 +121,30 @@
             color: #000000;
         }
         
-        .popular-songs {
+        .now-playing {
             margin-bottom: 2rem;
-        }
-        
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
         }
         
         .section-title {
             font-size: 1.5rem;
             font-weight: bold;
-        }
-        
-        .see-all-button {
-            color: #9ca3af;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        
-        .see-all-button:hover {
-            color: #ffffff;
-        }
-        
-        .song-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .song-item {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.2s;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background-color: #111827;
             cursor: pointer;
+            transition: all 0.2s;
         }
         
         .song-item:hover {
-            background-color: #111827;
-        }
-        
-        .song-item:hover .more-btn {
-            opacity: 1;
+            background-color: #1f2937;
+            transform: translateY(-1px);
         }
         
         .song-number {
@@ -256,18 +171,19 @@
             width: 0.25rem;
             background-color: #22d3ee;
             border-radius: 0.125rem;
-            transition: height 0.2s;
+            transition: height 0.1s ease-in-out;
             min-height: 4px;
         }
         
         .album-art {
-            width: 3rem;
-            height: 3rem;
-            background: linear-gradient(to bottom right, #f97316, #ec4899);
-            border-radius: 0.5rem;
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(to bottom right, #6366f1, #a855f7);
+            border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
         
         .track-info {
@@ -277,6 +193,8 @@
         .track-title {
             font-weight: 600;
             color: #ffffff;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
         }
         
         .track-artist {
@@ -284,12 +202,106 @@
             font-size: 0.875rem;
         }
         
-        .more-btn {
-            background-color: transparent;
-            border: none;
+        .track-duration {
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .audio-controls {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #111827;
+            border-radius: 0.75rem;
+            border: 1px solid #374151;
+        }
+        
+        .progress-container {
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #374151;
+            border-radius: 2px;
             cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.2s;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #22d3ee;
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+        
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .control-btn:hover {
+            background-color: #374151;
+        }
+        
+        .play-pause-btn {
+            background-color: #22d3ee;
+            color: #000000;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-pause-btn:hover {
+            background-color: #06b6d4;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+        
+        .volume-slider {
+            width: 5rem;
+            height: 3px;
+            background-color: #374151;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .volume-fill {
+            height: 100%;
+            background-color: #22d3ee;
+            border-radius: 2px;
+            width: 70%;
         }
         
         .contact-section {
@@ -452,33 +464,8 @@
 </head>
 <body>
     <div class="container">
-        <!-- Status Bar -->
-        <!-- <div class="status-bar">
-            <div>9:41</div>
-            <div class="signal-bars">
-                <div class="signal-container">
-                    <div class="signal-bar"></div>
-                    <div class="signal-bar"></div>
-                    <div class="signal-bar"></div>
-                    <div class="signal-bar-inactive"></div>
-                </div>
-                <svg class="battery-icon" viewBox="0 0 16 12" fill="white">
-                    <path d="M1 3h14v6H1z M15 5v2h1V5z"/>
-                </svg>
-            </div>
-        </div> -->
-
         <!-- Main Content -->
         <div class="main-content">
-            <!-- Bookmark Icon -->
-            <!-- <div class="bookmark-container">
-                <div class="bookmark-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
-                    </svg>
-                </div>
-            </div> -->
-
             <!-- Artist Image -->
             <div class="artist-image-container">
                 <div class="artist-image">
@@ -498,25 +485,94 @@
                 <p class="artist-description">
                     Electronic music producer and DJ from Empangeni. Specializing in creating unforgettable experiences through cutting-edge beats and seamless mixing...
                 </p>
-                
             </div>
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button id="listen-btn" class="listen-button">Listen</button>
+                <button id="listen-btn" class="listen-button">
+                    <svg id="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg id="pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                    <span id="listen-text">Listen</span>
+                </button>
                 <button id="book-btn" class="book-button">Book</button>
             </div>
 
-            <!-- Popular Songs Section -->
-            <div class="popular-songs">
-                <div class="section-header">
-                    <h2 class="section-title">Popular Songs</h2>
-                    <button class="see-all-button">See All →</button>
+            <!-- Now Playing Section -->
+            <div class="now-playing">
+                <h2 class="section-title">Now Playing</h2>
+                
+                <div class="song-item" id="track-item">
+                    <div class="song-number">
+                        <div class="visualizer hidden" id="visualizer">
+                            <div class="visualizer-bar" style="height: 4px;"></div>
+                            <div class="visualizer-bar" style="height: 8px;"></div>
+                            <div class="visualizer-bar" style="height: 12px;"></div>
+                            <div class="visualizer-bar" style="height: 6px;"></div>
+                        </div>
+                        <span class="track-number" id="track-number">01</span>
+                    </div>
+                    <div class="album-art">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                        </svg>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Deephouse Mix</div>
+                        <div class="track-artist">DJ Andile</div>
+                    </div>
+                    <div class="track-duration" id="duration">--:--</div>
                 </div>
 
-                <!-- Song List -->
-                <div class="song-list" id="song-list">
-                    <!-- Songs will be populated by JavaScript -->
+                <!-- Audio Controls -->
+                <div class="audio-controls">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="current-time">0:00</span>
+                            <span id="total-time">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button class="control-btn" id="prev-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="play-pause-btn" id="main-play-btn">
+                            <svg id="main-play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg id="main-pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="control-btn" id="next-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 18h2V6h-2v12zM6 6v12l8.5-6z"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="volume-control">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                            </svg>
+                            <div class="volume-slider" id="volume-slider">
+                                <div class="volume-fill" id="volume-fill"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -548,7 +604,7 @@
 
                 <!-- Social Links -->
                 <div class="social-links">
-                    <a href="https://www.facebook.com/share/1FRqjeBjHk/"  class="social-link">
+                    <a href="https://www.facebook.com/share/1FRqjeBjHk/" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                         </svg>
@@ -617,137 +673,197 @@
         </div>
     </div>
 
-    <script>
-        // Application state
-        let isPlaying = false;
-        let currentTrack = 0;
-        let visualizerData = Array(20).fill(0);
-        let visualizerInterval;
+    <!-- Hidden Audio Element -->
+    <audio id="audio-player" preload="metadata">
+        <source src="./assect/Deephouse Mix.mp3" type="audio/mpeg">
+        <source src="./assect/Deephouse Mix.wav" type="audio/wav">
+        <source src="./assect/Deephouse Mix.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
 
-        const tracks = [
-            { title: "Midnight Pulse", artist: "DJ Andile", album: "Electric Nights", number: "01" },
-            { title: "Neon Dreams", artist: "DJ Andile", album: "Future Bass Collection", number: "02" },
-            { title: "Bass Revolution", artist: "DJ Andile", album: "Underground Hits", number: "03" },
-            { title: "Digital Horizon", artist: "DJ Andile", album: "Electronic Euphoria", number: "04" }
-        ];
+    <script>
+        // Audio player state
+        let isPlaying = false;
+        let visualizerInterval;
+        let currentVolume = 0.7;
 
         // DOM elements
+        const audio = document.getElementById('audio-player');
         const listenBtn = document.getElementById('listen-btn');
+        const mainPlayBtn = document.getElementById('main-play-btn');
+        const trackItem = document.getElementById('track-item');
         const bookBtn = document.getElementById('book-btn');
         const bookingModal = document.getElementById('booking-modal');
         const cancelBtn = document.getElementById('cancel-btn');
         const bookingForm = document.getElementById('booking-form');
-        const songList = document.getElementById('song-list');
+        
+        // Audio control elements
+        const progressBar = document.getElementById('progress-bar');
+        const progressFill = document.getElementById('progress-fill');
+        const currentTimeEl = document.getElementById('current-time');
+        const totalTimeEl = document.getElementById('total-time');
+        const volumeSlider = document.getElementById('volume-slider');
+        const volumeFill = document.getElementById('volume-fill');
+        const durationEl = document.getElementById('duration');
+        
+        // Play/pause icons
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        const mainPlayIcon = document.getElementById('main-play-icon');
+        const mainPauseIcon = document.getElementById('main-pause-icon');
+        const listenText = document.getElementById('listen-text');
+        const trackNumber = document.getElementById('track-number');
+        const visualizer = document.getElementById('visualizer');
 
-        // Initialize the song list
-        function initializeSongList() {
-            songList.innerHTML = tracks.map((track, index) => `
-                <div class="song-item" data-track="${index}">
-                    <div class="song-number">
-                        <div class="visualizer ${index === currentTrack && isPlaying ? '' : 'hidden'}" id="visualizer-${index}">
-                            <div class="visualizer-bar" style="height: 4px;"></div>
-                            <div class="visualizer-bar" style="height: 4px;"></div>
-                            <div class="visualizer-bar" style="height: 4px;"></div>
-                            <div class="visualizer-bar" style="height: 4px;"></div>
-                        </div>
-                        <span class="track-number ${index === currentTrack && isPlaying ? 'hidden' : ''}" id="track-number-${index}">${track.number}</span>
-                    </div>
-                    <div class="album-art">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
-                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-                        </svg>
-                    </div>
-                    <div class="track-info">
-                        <div class="track-title">${track.title}</div>
-                        <div class="track-artist">${track.artist}</div>
-                    </div>
-                    <button class="more-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
-                            <circle cx="12" cy="12" r="1"/>
-                            <circle cx="19" cy="12" r="1"/>
-                            <circle cx="5" cy="12" r="1"/>
-                        </svg>
-                    </button>
-                </div>
-            `).join('');
+        // Format time in MM:SS format
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
         }
 
-        // Visualizer animation
-        function startVisualizer() {
-            visualizerInterval = setInterval(() => {
-                if (isPlaying) {
-                    visualizerData = visualizerData.map(() => Math.random() * 80 + 20);
-                    updateVisualizer();
-                }
-            }, 200);
-        }
-
-        function stopVisualizer() {
-            if (visualizerInterval) {
-                clearInterval(visualizerInterval);
-            }
-        }
-
-        function updateVisualizer() {
-            const visualizer = document.getElementById(`visualizer-${currentTrack}`);
-            if (visualizer) {
-                const bars = visualizer.querySelectorAll('.visualizer-bar');
-                bars.forEach((bar, index) => {
-                    if (index < 4) {
-                        bar.style.height = `${visualizerData[index] / 5}px`;
-                    }
+        // Toggle play/pause
+        function togglePlayPause() {
+            if (isPlaying) {
+                audio.pause();
+                pauseAudio();
+            } else {
+                audio.play().then(() => {
+                    playAudio();
+                }).catch(e => {
+                    console.log('Playback failed:', e);
                 });
             }
         }
 
-        // Toggle play/pause
-        function togglePlay() {
-            isPlaying = !isPlaying;
-            updatePlayState();
+        // Play audio
+        function playAudio() {
+            isPlaying = true;
             
-            if (isPlaying) {
-                startVisualizer();
-            } else {
-                stopVisualizer();
+            // Update UI
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+            mainPlayIcon.classList.add('hidden');
+            mainPauseIcon.classList.remove('hidden');
+            listenText.textContent = 'Pause';
+            
+            // Show visualizer
+            trackNumber.classList.add('hidden');
+            visualizer.classList.remove('hidden');
+            
+            // Start visualizer animation
+            startVisualizer();
+        }
+
+        // Pause audio
+        function pauseAudio() {
+            isPlaying = false;
+            
+            // Update UI
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+            mainPlayIcon.classList.remove('hidden');
+            mainPauseIcon.classList.add('hidden');
+            listenText.textContent = 'Listen';
+            
+            // Hide visualizer
+            trackNumber.classList.remove('hidden');
+            visualizer.classList.add('hidden');
+            
+            // Stop visualizer animation
+            stopVisualizer();
+        }
+
+        // Start visualizer animation
+        function startVisualizer() {
+            const bars = document.querySelectorAll('.visualizer-bar');
+            visualizerInterval = setInterval(() => {
+                bars.forEach(bar => {
+                    const height = Math.random() * 16 + 4;
+                    bar.style.height = `${height}px`;
+                });
+            }, 200);
+        }
+
+        // Stop visualizer animation
+        function stopVisualizer() {
+            if (visualizerInterval) {
+                clearInterval(visualizerInterval);
+                visualizerInterval = null;
             }
         }
 
-        function updatePlayState() {
-            tracks.forEach((_, index) => {
-                const visualizer = document.getElementById(`visualizer-${index}`);
-                const trackNumber = document.getElementById(`track-number-${index}`);
-                
-                if (index === currentTrack && isPlaying) {
-                    visualizer.classList.remove('hidden');
-                    trackNumber.classList.add('hidden');
-                } else {
-                    visualizer.classList.add('hidden');
-                    trackNumber.classList.remove('hidden');
-                }
-            });
+        // Update progress bar
+        function updateProgress() {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = `${progress}%`;
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+                totalTimeEl.textContent = formatTime(audio.duration);
+            }
+        }
+
+        // Set volume
+        function setVolume(volume) {
+            currentVolume = volume;
+            audio.volume = volume;
+            volumeFill.style.width = `${volume * 100}%`;
         }
 
         // Event listeners
-        listenBtn.addEventListener('click', togglePlay);
+        listenBtn.addEventListener('click', togglePlayPause);
+        mainPlayBtn.addEventListener('click', togglePlayPause);
+        trackItem.addEventListener('click', togglePlayPause);
 
-        // Song item click handlers
-        document.addEventListener('click', (e) => {
-            const songItem = e.target.closest('.song-item');
-            if (songItem) {
-                const trackIndex = parseInt(songItem.dataset.track);
-                if (trackIndex === currentTrack) {
-                    togglePlay();
-                } else {
-                    currentTrack = trackIndex;
-                    isPlaying = true;
-                    updatePlayState();
-                    startVisualizer();
-                }
+        // Audio events
+        audio.addEventListener('loadedmetadata', () => {
+            totalTimeEl.textContent = formatTime(audio.duration);
+            durationEl.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', updateProgress);
+
+        audio.addEventListener('ended', () => {
+            pauseAudio();
+            audio.currentTime = 0;
+            updateProgress();
+        });
+
+        audio.addEventListener('canplay', () => {
+            if (audio.duration) {
+                durationEl.textContent = formatTime(audio.duration);
             }
         });
 
-        // Booking modal handlers
+        // Progress bar click
+        progressBar.addEventListener('click', (e) => {
+            if (audio.duration) {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const percentage = clickX / rect.width;
+                audio.currentTime = percentage * audio.duration;
+            }
+        });
+
+        // Volume slider click
+        volumeSlider.addEventListener('click', (e) => {
+            const rect = volumeSlider.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const percentage = clickX / rect.width;
+            setVolume(Math.max(0, Math.min(1, percentage)));
+        });
+
+        // Previous/Next buttons (placeholder functionality)
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            audio.currentTime = 0;
+        });
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            // Placeholder for next track functionality
+            console.log('Next track');
+        });
+
+        // Booking modal functionality
         bookBtn.addEventListener('click', () => {
             bookingModal.classList.remove('hidden');
         });
@@ -756,18 +872,56 @@
             bookingModal.classList.add('hidden');
         });
 
+        // Close modal when clicking outside
         bookingModal.addEventListener('click', (e) => {
             if (e.target === bookingModal) {
                 bookingModal.classList.add('hidden');
             }
         });
 
+        // Handle form submission
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(bookingForm);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate booking request
             alert('Booking request sent! DJ Andile will contact you soon.');
             bookingModal.classList.add('hidden');
             bookingForm.reset();
         });
 
-        // Initialize the page
-        initializeSongList();
+        // Initialize volume
+        setVolume(currentVolume);
+
+        // Handle image load error
+        const artistImg = document.querySelector('.artist-img');
+        artistImg.addEventListener('error', () => {
+            artistImg.style.display = 'none';
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) {
+                e.preventDefault();
+                togglePlayPause();
+            }
+        });
+
+        // Add smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
